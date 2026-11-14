@@ -4,6 +4,8 @@ A **login and sign-up page** for a fictional pet shop, built with **HTML and CSS
 
 > An orange panel slides from side to side to switch between the two forms.
 
+[![Ver demo](https://img.shields.io/badge/ver_demo-ao_vivo-ff8a3d?style=for-the-badge)](https://vitoriacdev.github.io/pagelogin_petshop/)
+
 ## Features
 
 | Feature | How it works |
