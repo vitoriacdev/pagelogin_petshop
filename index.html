@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patinhas & Cia | Entrar ou criar conta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <input type="checkbox" id="modo-cadastro" class="toggle" aria-label="Alternar entre entrar e criar conta">
+
+  <main class="card">
+
+    <! LOGIN >
+    <form class="form form-login" action="#" method="post">
+      <span class="marca">🐾 Patinhas &amp; Cia</span>
+      <h1>Seu pet sentiu sua falta!</h1>
+      <p class="sub">Entre para ver seus pedidos e favoritos.</p>
+
+      <label>E-mail
+        <input type="email" name="email" placeholder="voce@email.com" required>
+      </label>
+
+      <label>Senha
+        <input type="password" name="senha" placeholder="Sua senha" minlength="6" required>
+      </label>
+
+      <div class="linha">
+        <label class="opcao"><input type="checkbox" name="lembrar" class="oculto"><span class="caixa" aria-hidden="true"></span> Lembrar de mim</label>
+        <a href="#">Esqueci a senha</a>
+      </div>
+
+      <button type="submit" class="btn-principal">Entrar</button>
+
+      <p class="troca-mobile">Primeira vez aqui? <label for="modo-cadastro">Criar conta</label></p>
+    </form>
+
+    <! CADASTRO >
+    <form class="form form-cadastro" id="form-cadastro" action="#" method="post">
+      <span class="marca">🐾 Patinhas &amp; Cia</span>
+      <h1>Vamos conhecer o seu pet?</h1>
+
+      <label>Seu nome
+        <input type="text" name="nome" placeholder="Como quer ser chamada?" required>
+      </label>
+
+      <label>E-mail
+        <input type="email" name="email" placeholder="voce@email.com" required>
+      </label>
+
+      <label>Senha
+        <input type="password" name="senha" placeholder="Mínimo de 6 caracteres" minlength="6" required>
+      </label>
+
+      <label>Nome do pet
+        <input type="text" name="pet" placeholder="Ex.: Thor, Mel, Bolinha" required>
+      </label>
+
+      <fieldset>
+        <legend>Tipo de pet</legend>
+        <div class="tipos">
+          <label><input type="radio" name="tipo" value="cachorro"><span>Cachorro</span></label>
+          <label><input type="radio" name="tipo" value="gato"><span>Gato</span></label>
+          <label><input type="radio" name="tipo" value="outro"><span>Outro</span></label>
+        </div>
+      </fieldset>
+
+      <div class="aceite">
+        <label class="opcao">
+          <! ID 'termos' adicionado para o JS funcionar perfeitamente >
+          <input type="checkbox" id="termos" name="termos" required class="oculto">
+          <span class="caixa" aria-hidden="true"></span> Aceito os termos de uso
+        </label>
+        <a href="#termos-uso">Ler termos</a>
+      </div>
+
+      <button type="submit" class="btn-principal">Criar conta</button>
+
+      <p class="troca-mobile">Já tem conta? <label for="modo-cadastro">Entrar</label></p>
+    </form>
+
+    <! PAINEL QUE DESLIZA >
+    <aside class="painel">
+      <div class="painel-texto painel-cadastrar">
+        <span class="emoji" aria-hidden="true">🐶</span>
+        <h2>Primeira vez por aqui?</h2>
+        <p>Cadastre-se e ganhe <strong>10% off</strong> na primeira compra.</p>
+        <label class="troca" for="modo-cadastro" tabindex="-1">Criar conta</label>
+      </div>
+      <div class="painel-texto painel-entrar">
+        <span class="emoji" aria-hidden="true">🐱</span>
+        <h2>Já é da família?</h2>
+        <p>Entre e continue de onde parou.</p>
+        <label class="troca" for="modo-cadastro" tabindex="-1">Entrar</label>
+      </div>
+    </aside>
+
+  </main>
+
+  <! TERMOS DE USO (abre com :target) >
+  <div class="modal" id="termos-uso" role="dialog" aria-modal="true" aria-labelledby="titulo-termos">
+    <a href="#" class="fundo" aria-label="Fechar termos de uso"></a>
+    
+    <div class="modal-caixa">
+      <h2 id="titulo-termos">Termos de uso</h2>
+
+      <div class="modal-texto" tabindex="0">
+        <ol>
+          <li><strong>Conta.</strong> Você é responsável pelas informações do cadastro e pela segurança da sua senha.</li>
+          <li><strong>Dados do pet.</strong> Usamos o nome e o tipo do seu pet apenas para sugerir produtos e serviços.</li>
+          <li><strong>Compras.</strong> Preços e estoque podem mudar. O valor final aparece antes de você concluir o pedido.</li>
+          <li><strong>Privacidade.</strong> Não vendemos seus dados. Você pode pedir a exclusão da conta quando quiser.</li>
+          <li><strong>Mudanças.</strong> Podemos atualizar estes termos e avisaremos por e-mail quando isso acontecer.</li>
+        </ol>
+      </div>
+
+      <! Checkbox de dentro do modal >
+      <label class="opcao">
+        <input type="checkbox" id="termos-modal" class="oculto">
+        <span class="caixa" aria-hidden="true"></span> Li e aceito os termos de uso
+      </label>
+
+      <a href="#" class="btn-fechar">Fechar</a>
+    </div>
+  </div>
+
+  <! Script de Sincronização Seguro >
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const aceiteCadastro = document.getElementById("termos");
+      const aceiteModal = document.getElementById("termos-modal");
+
+      if (aceiteCadastro && aceiteModal) {
+        aceiteCadastro.addEventListener("change", () => {
+          aceiteModal.checked = aceiteCadastro.checked;
+        });
+
+        aceiteModal.addEventListener("change", () => {
+          aceiteCadastro.checked = aceiteModal.checked;
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
